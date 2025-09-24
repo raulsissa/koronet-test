@@ -58,7 +58,6 @@ resource "aws_ecs_task_definition" "web_task" {
     {
       name = "prometheus-sidecar",
       image = "prom/prometheus:latest",
-      essential = false,
       portMappings = [{ containerPort = 9090, hostPort = 9090, protocol = "tcp" }]
     }
   ])
