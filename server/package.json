@@ -1,8 +1,4 @@
----
 
-# server/package.json
-
-```json
 {
   "name": "koronet-web",
   "version": "1.0.0",
