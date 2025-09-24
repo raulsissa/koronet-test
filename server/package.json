@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "end": "jest --detectOpenHandles"  
   },
   "dependencies": {
     "express": "^4.18.2",
