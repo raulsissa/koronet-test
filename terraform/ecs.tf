@@ -2,7 +2,7 @@ resource "aws_ecs_cluster" "this" {
   name = var.cluster_name
 }
 
-# Task role and execution role
+
 resource "aws_iam_role" "ecs_task_execution_role" {
   name = "ecsTaskExecutionRole-koronet"
   assume_role_policy = data.aws_iam_policy_document.ecs_task_assume_role.json
@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "ecs_task_assume_role" {
   }
 }
 
-# Attach managed policies for ECS tasks (pull images, write logs)
+
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_policy" {
   role = aws_iam_role.ecs_task_execution_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
@@ -46,7 +46,7 @@ resource "aws_security_group" "ecs_sg" {
   }
 }
 
-# Example task definition (FARGATE)
+
 resource "aws_ecs_task_definition" "web_task" {
   family = "koronet-web"
   network_mode = "awsvpc"
