@@ -1,0 +1,36 @@
+name: Terraform Destroy AWS Infra
+
+on:
+  workflow_dispatch: # Permite ejecutar manualmente desde GitHub UI
+
+jobs:
+  destroy:
+    name: Destroy Terraform Infrastructure
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_REGION: us-east-1 # Cambia según tu región
+      TF_WORKING_DIR: ./terraform # Carpeta donde están tus archivos .tf
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.0 # Ajusta a tu versión
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Terraform Init
+        working-directory: terraform
+        run: terraform init -input=false
+
+      - name: Terraform Destroy
+        working-directory: terraform
+        run: terraform destroy -auto-approve
