@@ -3,6 +3,8 @@ const { Pool } = require('pg');
 const Redis = require('ioredis');
 const client = require('prom-client');
 
+const app = require('./app');
+
 const app = express();
 const collectDefaultMetrics = client.collectDefaultMetrics;
 collectDefaultMetrics();
