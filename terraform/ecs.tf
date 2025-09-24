@@ -56,15 +56,6 @@ resource "aws_ecs_task_definition" "web_task" {
   execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
   container_definitions = jsonencode([
     {
-      name = "web",
-      image = "${var.docker_image}",
-      essential = true,
-      portMappings = [{ containerPort = 3000, hostPort = 3000, protocol = "tcp" }],
-      environment = [
-        { name = "DATABASE_URL", value = "${var.database_url}" }
-      ]
-    },
-    {
       name = "prometheus-sidecar",
       image = "prom/prometheus:latest",
       essential = false,
