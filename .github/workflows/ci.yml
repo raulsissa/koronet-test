@@ -56,3 +56,7 @@ jobs:
 
       - name: Deploy to ECS
         run: |
+          aws ecs update-service \
+            --cluster koronet-cluster \
+            --service koronet-service \
+            --force-new-deployment
