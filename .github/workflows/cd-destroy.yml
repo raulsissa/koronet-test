@@ -1,16 +1,12 @@
 name: Terraform Destroy AWS Infra
 
 on:
-  workflow_dispatch: # Permite ejecutar manualmente desde GitHub UI
+  workflow_dispatch: 
 
 jobs:
   destroy:
     name: Destroy Terraform Infrastructure
     runs-on: ubuntu-latest
-
-    env:
-      AWS_REGION: us-east-1 # Cambia según tu región
-      TF_WORKING_DIR: ./terraform # Carpeta donde están tus archivos .tf
 
     steps:
       - name: Checkout repository
