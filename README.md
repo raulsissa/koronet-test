@@ -1,21 +1,5 @@
 # Koronet Test
 
-## Quick Start
-
-```sh
-docker-compose up --build
-```
-
-## Environment Variables
-- NODE_ENV
-- DATABASE_URL
-- REDIS_URL
-
-## Run Tests
-```sh
-npm test --prefix server
-```
-
 ## Deploy
 - Build and push Docker image via CI pipeline
 - Terraform provisions AWS VPC, ECS cluster, networking
