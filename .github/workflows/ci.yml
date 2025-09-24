@@ -27,6 +27,8 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm install --prefix server
+      - name: update jobs
+        run: npm install --prefix server jest@latest
       - name: Run tests
         run: npm test --prefix server
       - name: Build Docker image
